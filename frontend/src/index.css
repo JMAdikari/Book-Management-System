@@ -2,71 +2,188 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+/* Glass-morphism Theme Root Variables */
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Glass-morphism Theme Colors */
+    --glass-bg-primary: rgba(255, 255, 255, 0.1);
+    --glass-bg-secondary: rgba(255, 255, 255, 0.2);
+    --glass-bg-tertiary: rgba(255, 255, 255, 0.05);
+    
+    /* Dark Glass Colors */
+    --glass-dark-primary: rgba(0, 0, 0, 0.2);
+    --glass-dark-secondary: rgba(0, 0, 0, 0.3);
+    --glass-dark-tertiary: rgba(0, 0, 0, 0.4);
+    
+    /* Border Colors */
+    --glass-border-light: rgba(255, 255, 255, 0.2);
+    --glass-border-medium: rgba(255, 255, 255, 0.3);
+    --glass-border-strong: rgba(255, 255, 255, 0.5);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #e5e7eb;
+    --text-tertiary: #d1d5db;
+    --text-muted: #9ca3af;
+    
+    /* Background Gradients */
+    --bg-gradient-primary: linear-gradient(135deg, #1f2937 0%, #111827 50%, #1f2937 100%);
+    --bg-gradient-secondary: linear-gradient(to bottom right, #374151, #1f2937, #111827);
+    
+    /* Glass Blur Effects */
+    --blur-sm: blur(8px);
+    --blur-md: blur(12px);
+    --blur-lg: blur(16px);
+    
+    /* Font Settings */
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
   }
-  a:hover {
-    color: #747bff;
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg-gradient-primary);
+    color: var(--text-primary);
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   }
-  button {
-    background-color: #f9f9f9;
+
+  #root {
+    min-height: 100vh;
   }
+}
+
+@layer components {
+  /* Glass-morphism Primary Button */
+  .btn-primary {
+    background: var(--glass-bg-primary);
+    backdrop-filter: var(--blur-md);
+    border: 1px solid var(--glass-border-light);
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary:hover {
+    background: var(--glass-bg-secondary);
+    border-color: var(--glass-border-medium);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Glass-morphism Secondary Button */
+  .btn-secondary {
+    background: var(--glass-dark-primary);
+    backdrop-filter: var(--blur-md);
+    border: 1px solid var(--glass-border-light);
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-secondary:hover {
+    background: var(--glass-dark-secondary);
+    border-color: var(--glass-border-medium);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Glass-morphism Card */
+  .card {
+    background: var(--glass-bg-primary);
+    backdrop-filter: var(--blur-md);
+    border: 1px solid var(--glass-border-light);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card:hover {
+    background: var(--glass-bg-secondary);
+    border-color: var(--glass-border-medium);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Glass-morphism Input */
+  .glass-input {
+    background: var(--glass-bg-primary);
+    backdrop-filter: var(--blur-md);
+    border: 1px solid var(--glass-border-light);
+    color: var(--text-primary);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .glass-input:focus {
+    outline: none;
+    border-color: var(--glass-border-strong);
+    background: var(--glass-bg-secondary);
+    box-shadow: 0 0 0 2px var(--glass-border-light);
+  }
+  
+  .glass-input::placeholder {
+    color: var(--text-muted);
+  }
+}
+
+/* Glass-morphism Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--glass-dark-tertiary);
+  backdrop-filter: var(--blur-sm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--blur-md);
+  border-radius: 4px;
+  border: 1px solid var(--glass-border-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--glass-bg-secondary);
+  border-color: var(--glass-border-medium);
+}
+
+/* Additional Glass-morphism Utility Classes */
+.glass-navbar {
+  background: var(--glass-dark-primary);
+  backdrop-filter: var(--blur-md);
+  border-bottom: 1px solid var(--glass-border-light);
+}
+
+.glass-modal {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--glass-border-light);
+}
+
+.glass-overlay {
+  background: var(--glass-dark-secondary);
+  backdrop-filter: var(--blur-md);
+}
+
+.text-glass-primary {
+  color: var(--text-primary);
+}
+
+.text-glass-secondary {
+  color: var(--text-secondary);
+}
+
+.text-glass-muted {
+  color: var(--text-muted);
 }
