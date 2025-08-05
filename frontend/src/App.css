@@ -1,42 +1,210 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Glass-morphism Theme Colors */
+:root {
+  /* Primary Glass-morphism Colors */
+  --glass-bg-primary: rgba(255, 255, 255, 0.1);
+  --glass-bg-secondary: rgba(255, 255, 255, 0.2);
+  --glass-bg-tertiary: rgba(255, 255, 255, 0.05);
+  
+  /* Dark Glass Colors */
+  --glass-dark-primary: rgba(0, 0, 0, 0.2);
+  --glass-dark-secondary: rgba(0, 0, 0, 0.3);
+  --glass-dark-tertiary: rgba(0, 0, 0, 0.4);
+  
+  /* Border Colors */
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+  --glass-border-medium: rgba(255, 255, 255, 0.3);
+  --glass-border-strong: rgba(255, 255, 255, 0.5);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e5e7eb;
+  --text-tertiary: #d1d5db;
+  --text-muted: #9ca3af;
+  
+  /* Background Gradients */
+  --bg-gradient-primary: linear-gradient(135deg, #1f2937 0%, #111827 50%, #1f2937 100%);
+  --bg-gradient-secondary: linear-gradient(to bottom right, #374151, #1f2937, #111827);
+  
+  /* Glass Blur Effects */
+  --blur-sm: blur(8px);
+  --blur-md: blur(12px);
+  --blur-lg: blur(16px);
+  
+  /* Status Colors with Glass Effect */
+  --glass-success: rgba(34, 197, 94, 0.2);
+  --glass-error: rgba(239, 68, 68, 0.2);
+  --glass-warning: rgba(245, 158, 11, 0.2);
+  --glass-info: rgba(59, 130, 246, 0.2);
+  
+  /* Success/Error Borders */
+  --border-success: rgba(34, 197, 94, 0.3);
+  --border-error: rgba(239, 68, 68, 0.3);
+  --border-warning: rgba(245, 158, 11, 0.3);
+  --border-info: rgba(59, 130, 246, 0.3);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* App-specific styles */
+.App {
+  min-height: 100vh;
+  background: var(--bg-gradient-primary);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Enhanced glass-morphism card styles */
+.enhanced-card {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.enhanced-card:hover {
+  transform: translateY(-4px);
+  background: var(--glass-bg-secondary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--glass-border-medium);
 }
 
-.card {
-  padding: 2em;
+/* Glass-morphism button animations */
+.btn-animate {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--glass-border-light);
+  color: var(--text-primary);
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.read-the-docs {
-  color: #888;
+.btn-animate:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: var(--glass-bg-secondary);
+  border-color: var(--glass-border-medium);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-animate:active {
+  transform: translateY(0) scale(1);
+  background: var(--glass-bg-tertiary);
+}
+
+/* Glass-morphism gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 50%, var(--text-tertiary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass-morphism loading spinner */
+.spinner {
+  border: 3px solid var(--glass-bg-tertiary);
+  border-top: 3px solid var(--text-primary);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  backdrop-filter: var(--blur-sm);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Glass-morphism form enhancements */
+.form-floating {
+  position: relative;
+}
+
+.form-floating input {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--glass-border-light);
+  color: var(--text-primary);
+}
+
+.form-floating input:focus {
+  border-color: var(--glass-border-strong);
+  box-shadow: 0 0 0 2px var(--glass-border-light);
+  background: var(--glass-bg-secondary);
+}
+
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.75);
+  color: var(--text-primary);
+}
+
+.form-floating label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  color: var(--text-tertiary);
+}
+
+/* Glass-morphism utility classes */
+.glass-card {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 0.75rem;
+}
+
+.glass-button {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--glass-border-light);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: var(--glass-bg-secondary);
+  border-color: var(--glass-border-medium);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.glass-input {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--glass-border-light);
+  color: var(--text-primary);
+}
+
+.glass-input:focus {
+  border-color: var(--glass-border-strong);
+  box-shadow: 0 0 0 2px var(--glass-border-light);
+}
+
+.glass-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Status message styles */
+.glass-success {
+  background: var(--glass-success);
+  border: 1px solid var(--border-success);
+  color: #10b981;
+}
+
+.glass-error {
+  background: var(--glass-error);
+  border: 1px solid var(--border-error);
+  color: #ef4444;
+}
+
+.glass-warning {
+  background: var(--glass-warning);
+  border: 1px solid var(--border-warning);
+  color: #f59e0b;
+}
+
+.glass-info {
+  background: var(--glass-info);
+  border: 1px solid var(--border-info);
+  color: #3b82f6;
 }
