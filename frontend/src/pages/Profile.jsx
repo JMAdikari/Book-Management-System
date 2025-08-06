@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '../services/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { authService } from '../services/authService';
 import Navbar from '../components/Navbar';
 
@@ -13,6 +13,7 @@ function Profile() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -41,7 +42,12 @@ function Profile() {
       }
     };
     fetchProfile();
-  }, [navigate]);
+
+    // Check if edit mode should be enabled from URL parameters
+    if (searchParams.get('edit') === 'true') {
+      setEditMode(true);
+    }
+  }, [navigate, searchParams]);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -71,20 +77,31 @@ function Profile() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div className="min-h-screen" style={{ background: 'var(--bg-gradient-primary)' }}>
       <Navbar />
       <div className="flex items-center justify-center min-h-screen pt-20 px-6">
-        <div className="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-2xl w-full max-w-2xl border border-white/20">
+        <div style={{ 
+          background: 'var(--glass-bg-primary)', 
+          backdropFilter: 'var(--blur-md)',
+          border: '1px solid var(--glass-border-light)'
+        }} className="p-8 rounded-xl shadow-2xl w-full max-w-4xl">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-md rounded-full border border-white/30 mb-4">
+            <div style={{ 
+              background: 'var(--glass-bg-secondary)', 
+              border: '1px solid var(--glass-border-medium)'
+            }} className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4">
               <span className="text-4xl">👤</span>
             </div>
-            <h2 className="text-3xl font-extrabold text-white">My Profile</h2>
-            <p className="text-gray-300 text-sm mt-2">Manage your account information and preferences</p>
+            <h2 className="text-3xl font-extrabold" style={{ color: 'var(--text-primary)' }}>My Profile</h2>
+            <p style={{ color: 'var(--text-secondary)' }} className="text-sm mt-2">Manage your account information and book collection</p>
           </div>
           
           {error && (
-            <div className="mb-6 p-4 bg-red-500/20 backdrop-blur-md border border-red-300/30 rounded-lg">
+            <div className="mb-6 p-4 rounded-lg border" style={{ 
+              background: 'var(--glass-error)', 
+              border: '1px solid var(--border-error)',
+              backdropFilter: 'var(--blur-md)'
+            }}>
               <div className="flex items-center">
                 <span className="text-red-300 text-xl mr-3">⚠️</span>
                 <p className="text-red-300 text-sm font-medium">{error}</p>
@@ -92,7 +109,11 @@ function Profile() {
             </div>
           )}
           {success && (
-            <div className="mb-6 p-4 bg-green-500/20 backdrop-blur-md border border-green-300/30 rounded-lg">
+            <div className="mb-6 p-4 rounded-lg border" style={{ 
+              background: 'var(--glass-success)', 
+              border: '1px solid var(--border-success)',
+              backdropFilter: 'var(--blur-md)'
+            }}>
               <div className="flex items-center">
                 <span className="text-green-300 text-xl mr-3">✅</span>
                 <p className="text-green-300 text-sm font-medium">{success}</p>
@@ -102,45 +123,83 @@ function Profile() {
           
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-white mb-4"></div>
-              <p className="text-gray-300 text-lg">Loading your profile...</p>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 mb-4" style={{ borderBottomColor: 'var(--text-primary)' }}></div>
+              <p style={{ color: 'var(--text-secondary)' }} className="text-lg">Loading your profile...</p>
             </div>
           ) : !editMode ? (
             <div>
               {/* Profile Display Mode */}
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-white/5 backdrop-blur-md p-6 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="p-6 rounded-lg border transition-all duration-300 hover:scale-105" style={{ 
+                  background: 'var(--glass-bg-tertiary)', 
+                  border: '1px solid var(--glass-border-light)',
+                  backdropFilter: 'var(--blur-sm)'
+                }}>
                   <div className="flex items-center mb-3">
                     <span className="text-2xl mr-3">🏷️</span>
-                    <label className="text-gray-300 text-sm font-semibold uppercase tracking-wide">Username</label>
+                    <label style={{ color: 'var(--text-secondary)' }} className="text-sm font-semibold uppercase tracking-wide">Username</label>
                   </div>
-                  <p className="text-white font-medium text-lg">{user.username}</p>
+                  <p style={{ color: 'var(--text-primary)' }} className="font-medium text-lg">{user.username}</p>
                 </div>
-                <div className="bg-white/5 backdrop-blur-md p-6 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="p-6 rounded-lg border transition-all duration-300 hover:scale-105" style={{ 
+                  background: 'var(--glass-bg-tertiary)', 
+                  border: '1px solid var(--glass-border-light)',
+                  backdropFilter: 'var(--blur-sm)'
+                }}>
                   <div className="flex items-center mb-3">
                     <span className="text-2xl mr-3">📧</span>
-                    <label className="text-gray-300 text-sm font-semibold uppercase tracking-wide">Email</label>
+                    <label style={{ color: 'var(--text-secondary)' }} className="text-sm font-semibold uppercase tracking-wide">Email</label>
                   </div>
-                  <p className="text-white font-medium text-lg break-all">{user.email}</p>
+                  <p style={{ color: 'var(--text-primary)' }} className="font-medium text-lg break-all">{user.email}</p>
+                </div>
+              </div>
+
+              {/* Navigation Cards */}
+              <div className="mb-8">
+                <h3 style={{ color: 'var(--text-primary)' }} className="text-xl font-semibold mb-4 flex items-center">
+                  <span className="text-2xl mr-2">📚</span>
+                  Book Management
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <button
+                    onClick={() => navigate('/catalog')}
+                    className="p-6 rounded-lg font-semibold hover:scale-105 transition-all duration-300 text-left"
+                    style={{ 
+                      background: 'var(--glass-info)', 
+                      border: '1px solid var(--border-info)',
+                      color: 'var(--text-primary)',
+                      backdropFilter: 'var(--blur-md)'
+                    }}
+                  >
+                    <div className="flex items-center mb-2">
+                      <span className="text-3xl mr-3">📖</span>
+                      <span className="text-lg">My Book Catalog</span>
+                    </div>
+                    <p style={{ color: 'var(--text-secondary)' }} className="text-sm">View, edit, and manage your personal book collection</p>
+                  </button>
+                  <button
+                    onClick={() => navigate('/search')}
+                    className="p-6 rounded-lg font-semibold hover:scale-105 transition-all duration-300 text-left"
+                    style={{ 
+                      background: 'var(--glass-success)', 
+                      border: '1px solid var(--border-success)',
+                      color: 'var(--text-primary)',
+                      backdropFilter: 'var(--blur-md)'
+                    }}
+                  >
+                    <div className="flex items-center mb-2">
+                      <span className="text-3xl mr-3">🔍</span>
+                      <span className="text-lg">Search Books</span>
+                    </div>
+                    <p style={{ color: 'var(--text-secondary)' }} className="text-sm">Discover and add new books to your collection</p>
+                  </button>
                 </div>
               </div>
 
               {/* Action Buttons */}
               <div className="grid md:grid-cols-2 gap-4">
-                <button
-                  onClick={() => setEditMode(true)}
-                  className="bg-blue-500/20 backdrop-blur-md text-white p-4 rounded-lg font-semibold hover:bg-blue-500/30 hover:scale-105 transition-all duration-300 border border-blue-400/30 flex items-center justify-center"
-                >
-                  <span className="text-xl mr-2">✏️</span>
-                  Edit Profile
-                </button>
-                <button
-                  onClick={handleLogout}
-                  className="bg-red-500/20 backdrop-blur-md text-white p-4 rounded-lg font-semibold hover:bg-red-500/30 hover:scale-105 transition-all duration-300 border border-red-400/30 flex items-center justify-center"
-                >
-                  <span className="text-xl mr-2">🚪</span>
-                  Logout
-                </button>
+                
+               
               </div>
             </div>
           ) : (
@@ -148,7 +207,7 @@ function Profile() {
               {/* Profile Edit Mode */}
               <div className="space-y-6 mb-8">
                 <div>
-                  <label className="flex items-center text-gray-200 mb-3 text-sm font-semibold">
+                  <label className="flex items-center mb-3 text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
                     <span className="text-xl mr-2">🏷️</span>
                     Username
                   </label>
@@ -157,13 +216,19 @@ function Profile() {
                     name="username"
                     value={formData.username}
                     onChange={handleInputChange}
-                    className="w-full p-4 border border-white/30 bg-white/10 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 placeholder-gray-300 text-lg"
+                    className="w-full p-4 rounded-lg focus:outline-none focus:ring-2 text-lg"
+                    style={{ 
+                      background: 'var(--glass-bg-secondary)', 
+                      border: '1px solid var(--glass-border-light)',
+                      color: 'var(--text-primary)',
+                      backdropFilter: 'var(--blur-md)'
+                    }}
                     placeholder="Enter your username"
                     required
                   />
                 </div>
                 <div>
-                  <label className="flex items-center text-gray-200 mb-3 text-sm font-semibold">
+                  <label className="flex items-center mb-3 text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
                     <span className="text-xl mr-2">📧</span>
                     Email Address
                   </label>
@@ -172,13 +237,19 @@ function Profile() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full p-4 border border-white/30 bg-white/10 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 placeholder-gray-300 text-lg"
+                    className="w-full p-4 rounded-lg focus:outline-none focus:ring-2 text-lg"
+                    style={{ 
+                      background: 'var(--glass-bg-secondary)', 
+                      border: '1px solid var(--glass-border-light)',
+                      color: 'var(--text-primary)',
+                      backdropFilter: 'var(--blur-md)'
+                    }}
                     placeholder="Enter your email"
                     required
                   />
                 </div>
                 <div>
-                  <label className="flex items-center text-gray-200 mb-3 text-sm font-semibold">
+                  <label className="flex items-center mb-3 text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
                     <span className="text-xl mr-2">🔐</span>
                     New Password
                   </label>
@@ -187,10 +258,16 @@ function Profile() {
                     name="password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full p-4 border border-white/30 bg-white/10 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 placeholder-gray-300 text-lg"
+                    className="w-full p-4 rounded-lg focus:outline-none focus:ring-2 text-lg"
+                    style={{ 
+                      background: 'var(--glass-bg-secondary)', 
+                      border: '1px solid var(--glass-border-light)',
+                      color: 'var(--text-primary)',
+                      backdropFilter: 'var(--blur-md)'
+                    }}
                     placeholder="Leave blank to keep current password"
                   />
-                  <p className="text-xs text-gray-400 mt-2 flex items-center">
+                  <p className="text-xs mt-2 flex items-center" style={{ color: 'var(--text-muted)' }}>
                     <span className="mr-1">💡</span>
                     Optional: Leave empty to keep your current password
                   </p>
@@ -201,11 +278,17 @@ function Profile() {
                 <button 
                   type="submit" 
                   disabled={updating}
-                  className="bg-green-500/20 backdrop-blur-md text-white p-4 rounded-lg font-semibold hover:bg-green-500/30 hover:scale-105 transition-all duration-300 disabled:bg-green-500/10 disabled:cursor-not-allowed border border-green-400/30"
+                  className="p-4 rounded-lg font-semibold hover:scale-105 transition-all duration-300 disabled:cursor-not-allowed"
+                  style={{ 
+                    background: updating ? 'var(--glass-bg-tertiary)' : 'var(--glass-success)', 
+                    border: '1px solid var(--border-success)',
+                    color: 'var(--text-primary)',
+                    backdropFilter: 'var(--blur-md)'
+                  }}
                 >
                   {updating ? (
                     <span className="flex items-center justify-center">
-                      <div className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                      <div className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 mr-3" style={{ borderBottomColor: 'var(--text-primary)' }}></div>
                       Saving Changes...
                     </span>
                   ) : (
@@ -218,7 +301,13 @@ function Profile() {
                 <button
                   type="button"
                   onClick={() => setEditMode(false)}
-                  className="bg-gray-500/20 backdrop-blur-md text-white p-4 rounded-lg font-semibold hover:bg-gray-500/30 hover:scale-105 transition-all duration-300 border border-gray-400/30 flex items-center justify-center"
+                  className="p-4 rounded-lg font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center"
+                  style={{ 
+                    background: 'var(--glass-bg-secondary)', 
+                    border: '1px solid var(--glass-border-light)',
+                    color: 'var(--text-primary)',
+                    backdropFilter: 'var(--blur-md)'
+                  }}
                 >
                   <span className="text-xl mr-2">❌</span>
                   Cancel

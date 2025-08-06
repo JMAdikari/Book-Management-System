@@ -4,6 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using BookManagementSystem.Data;
 using BookManagementSystem.Services;
+using DotNetEnv;
+
+Env.Load(); // Load .env file
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,8 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<BookService>();
+builder.Services.AddHttpClient(); // Add HttpClient for Google Books API
 
 // Add CORS
 builder.Services.AddCors(options =>

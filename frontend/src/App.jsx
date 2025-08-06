@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
+import BookCatalog from './components/BookCatalog';
+import BookSearch from './components/BookSearch';
 import './App.css'
 
 function App() {
@@ -21,6 +23,22 @@ function App() {
                 <Profile />
               </ProtectedRoute>
             }
+          />
+          <Route 
+            path="/catalog" 
+            element={
+              <ProtectedRoute>
+                <BookCatalog />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/search" 
+            element={
+              <ProtectedRoute>
+                <BookSearch />
+              </ProtectedRoute>
+            } 
           />
           <Route path="/dashboard" element={
             <ProtectedRoute>

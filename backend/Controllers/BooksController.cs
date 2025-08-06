@@ -1,0 +1,81 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using BookManagementSystem.Models;
+using BookManagementSystem.Services;
+using System.Security.Claims;
+
+namespace BookManagementSystem.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorize]
+    public class BooksController : ControllerBase
+    {
+        private readonly BookService _bookService;
+
+        public BooksController(BookService bookService)
+        {
+            _bookService = bookService;
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchBooks([FromQuery] string query)
+        {
+            if (string.IsNullOrEmpty(query))
+            {
+                return BadRequest(new { Message = "Query is required" });
+            }
+
+            var results = await _bookService.SearchBooksAsync(query);
+            return Ok(results);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddBook([FromBody] Book book)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var addedBook = await _bookService.AddBookAsync(userId, book);
+            return Ok(new { Message = "Book added successfully", addedBook.Id });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserBooks()
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var books = await _bookService.GetUserBooksAsync(userId);
+            return Ok(books);
+        }
+
+        [HttpPut("{bookId}")]
+        public async Task<IActionResult> UpdateBook(int bookId, [FromBody] Book updatedBook)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var book = await _bookService.UpdateBookAsync(userId, bookId, updatedBook);
+            if (book == null)
+            {
+                return NotFound(new { Message = "Book not found or not owned by user" });
+            }
+
+            return Ok(new { Message = "Book updated successfully", book });
+        }
+
+        [HttpDelete("{bookId}")]
+        public async Task<IActionResult> DeleteBook(int bookId)
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var success = await _bookService.DeleteBookAsync(userId, bookId);
+            if (!success)
+            {
+                return NotFound(new { Message = "Book not found or not owned by user" });
+            }
+
+            return Ok(new { Message = "Book deleted successfully" });
+        }
+    }
+}

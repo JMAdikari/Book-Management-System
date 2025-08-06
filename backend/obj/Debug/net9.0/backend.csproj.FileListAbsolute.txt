@@ -231,3 +231,5 @@ C:\Users\ASUS\OneDrive\Desktop\Book Management System\backend\obj\Debug\net9.0\r
 C:\Users\ASUS\OneDrive\Desktop\Book Management System\backend\obj\Debug\net9.0\backend.pdb
 C:\Users\ASUS\OneDrive\Desktop\Book Management System\backend\obj\Debug\net9.0\backend.genruntimeconfig.cache
 C:\Users\ASUS\OneDrive\Desktop\Book Management System\backend\obj\Debug\net9.0\ref\backend.dll
+C:\Users\ASUS\OneDrive\Desktop\Book Management System\backend\bin\Debug\net9.0\DotNetEnv.dll
+C:\Users\ASUS\OneDrive\Desktop\Book Management System\backend\bin\Debug\net9.0\Sprache.dll
