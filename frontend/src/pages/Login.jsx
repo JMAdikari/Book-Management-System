@@ -16,14 +16,26 @@ function Login() {
     setError('');
     
     try {
+      console.log('Login attempt with email:', email);
       const result = await authService.login(email, password);
+      console.log('Login result:', result);
       
       if (result.success) {
-        navigate('/');
+        // Check if token was stored successfully
+        const storedToken = localStorage.getItem('authToken');
+        if (storedToken) {
+          console.log('Token verified in localStorage:', storedToken);
+          // Force a refresh to update the Navbar state
+          window.location.href = '/';
+        } else {
+          setError('Authentication failed: Token storage issue');
+          console.error('Token not found in localStorage after login');
+        }
       } else {
         setError(result.message);
       }
     } catch (err) {
+      console.error('Login error:', err);
       setError('An unexpected error occurred. Please try again.');
     } finally {
       setLoading(false);

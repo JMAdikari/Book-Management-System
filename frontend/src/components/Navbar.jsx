@@ -8,7 +8,33 @@ function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    setIsAuthenticated(authService.isAuthenticated());
+    // Check authentication status and update state
+    const checkAuth = () => {
+      const token = localStorage.getItem('authToken');
+      const authStatus = !!token;
+      console.log('Authentication status:', authStatus, token ? 'Token exists' : 'No token');
+      setIsAuthenticated(authStatus);
+    };
+    
+    checkAuth();
+    
+    // Set up event listener for storage changes (for multi-tab support)
+    const handleStorageChange = (e) => {
+      if (e.key === 'authToken') {
+        console.log('Auth token changed in storage, updating state');
+        checkAuth();
+      }
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Check auth status every second (temporary debugging solution)
+    const interval = setInterval(checkAuth, 1000);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      clearInterval(interval);
+    };
   }, []);
 
   const handleLogout = () => {

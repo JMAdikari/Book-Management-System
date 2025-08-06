@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UvZphFVX9UrM8kdH1flmFaZPDCF/T5u4c6WF/VUCpp8=",
+  "Hash": "1mDOoeBjr/L2nGrvjycdO1zLI2ygVe/8DYshi8sspF8=",
   "Source": "backend",
   "BasePath": "_content/backend",
   "Mode": "Default",
@@ -666,27 +666,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
-    },
-    {
-      "Identity": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\obj\\Debug\\net9.0\\compressed\\jt1hm7z5lp-b9sayid5wm.gz",
-      "SourceId": "backend",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\obj\\Debug\\net9.0\\compressed\\",
-      "BasePath": "_content/backend",
-      "RelativePath": "css/site#[.{fingerprint=b9sayid5wm}]?.css.gz",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\wwwroot\\css\\site.css",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "Fingerprint": "0suozzrugb",
-      "Integrity": "0FC1RbVkLkwKhJ1oi+r2Hw4Tm9av6DyJeo95YVvfA3Y=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\wwwroot\\css\\site.css"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\obj\\Debug\\net9.0\\compressed\\k1kx6bxg8n-lzl9nlhx6b.gz",
@@ -1401,27 +1380,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\backend.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\wwwroot\\css\\site.css",
-      "SourceId": "backend",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\wwwroot\\",
-      "BasePath": "_content/backend",
-      "RelativePath": "css/site#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "b9sayid5wm",
-      "Integrity": "j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\wwwroot\\favicon.ico",
@@ -2752,7 +2710,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2805,7 +2763,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2842,7 +2800,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2889,7 +2847,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2950,7 +2908,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2995,7 +2953,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3050,7 +3008,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3111,7 +3069,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3156,7 +3114,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3211,7 +3169,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3264,7 +3222,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3301,7 +3259,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Aug 2025 08:19:34 GMT"
+          "Value": "Tue, 05 Aug 2025 16:53:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3320,304 +3278,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-OcLl9De3hEdatdYmFhyZ2qmAKIJafIglkWikhMRtSOA="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.b9sayid5wm.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\obj\\Debug\\net9.0\\compressed\\jt1hm7z5lp-b9sayid5wm.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.003134796238"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "318"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0FC1RbVkLkwKhJ1oi+r2Hw4Tm9av6DyJeo95YVvfA3Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 31 Jul 2025 17:00:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "b9sayid5wm"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.b9sayid5wm.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "667"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 31 Jul 2025 17:00:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "b9sayid5wm"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.b9sayid5wm.css.gz",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\obj\\Debug\\net9.0\\compressed\\jt1hm7z5lp-b9sayid5wm.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "318"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0FC1RbVkLkwKhJ1oi+r2Hw4Tm9av6DyJeo95YVvfA3Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 31 Jul 2025 17:00:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "b9sayid5wm"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-0FC1RbVkLkwKhJ1oi+r2Hw4Tm9av6DyJeo95YVvfA3Y="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\obj\\Debug\\net9.0\\compressed\\jt1hm7z5lp-b9sayid5wm.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.003134796238"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "318"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0FC1RbVkLkwKhJ1oi+r2Hw4Tm9av6DyJeo95YVvfA3Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 31 Jul 2025 17:00:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "667"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 31 Jul 2025 17:00:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css.gz",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Book Management System\\backend\\obj\\Debug\\net9.0\\compressed\\jt1hm7z5lp-b9sayid5wm.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "318"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0FC1RbVkLkwKhJ1oi+r2Hw4Tm9av6DyJeo95YVvfA3Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 31 Jul 2025 17:00:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-0FC1RbVkLkwKhJ1oi+r2Hw4Tm9av6DyJeo95YVvfA3Y="
         }
       ]
     },
