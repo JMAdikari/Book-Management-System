@@ -9,7 +9,7 @@ const api = axios.create({
   },
 });
 
-// Request interceptor to add auth token
+// Request interceptor to add auth token. includes the JWT token in the Authorization header for all requests.
 api.interceptors.request.use(
   (config) => {
     console.log(`Making ${config.method.toUpperCase()} request to: ${config.baseURL}${config.url}`);

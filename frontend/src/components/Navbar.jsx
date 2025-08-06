@@ -73,11 +73,12 @@ function Navbar() {
             
             {isAuthenticated ? (
               <>
+                
                 <Link 
-                  to="/dashboard" 
+                  to="/profile" 
                   className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
                 >
-                  📊 Dashboard
+                  👤 Profile
                 </Link>
                 <button
                   onClick={handleLogout}

@@ -58,5 +58,30 @@ namespace BookManagementSystem.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+//   methods for user profile management
+        public async Task<User> GetUserProfile(int userId)
+        {
+            return await _context.Users.FindAsync(userId);
+        }
+
+        public async Task<User> UpdateUserProfile(int userId, User updatedUser)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                return null;
+            }
+
+            user.Username = updatedUser.Username ?? user.Username;
+            user.Email = updatedUser.Email ?? user.Email;
+            if (!string.IsNullOrEmpty(updatedUser.PasswordHash))
+            {
+                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(updatedUser.PasswordHash);
+            }
+
+            await _context.SaveChangesAsync();
+            return user;
+        }
     }
 }
