@@ -98,5 +98,51 @@ namespace BookManagementSystem.Controllers
 
             return Ok(new { Message = "Book deleted successfully" });
         }
+
+        [HttpPatch("{bookId}/reading-status")]
+        public async Task<IActionResult> UpdateReadingStatus(int bookId, [FromBody] UpdateReadingStatusRequest request)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { Message = "Invalid user authentication" });
+            }
+
+            var book = await _bookService.UpdateReadingStatusAsync(userId, bookId, request.ReadingStatus);
+            if (book == null)
+            {
+                return NotFound(new { Message = "Book not found or not owned by user" });
+            }
+
+            return Ok(new { Message = "Reading status updated successfully", book });
+        }
+
+        [HttpPatch("{bookId}/favorite")]
+        public async Task<IActionResult> UpdateFavoriteStatus(int bookId, [FromBody] UpdateFavoriteRequest request)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { Message = "Invalid user authentication" });
+            }
+
+            var book = await _bookService.UpdateFavoriteStatusAsync(userId, bookId, request.IsFavorite);
+            if (book == null)
+            {
+                return NotFound(new { Message = "Book not found or not owned by user" });
+            }
+
+            return Ok(new { Message = "Favorite status updated successfully", book });
+        }
+    }
+
+    public class UpdateReadingStatusRequest
+    {
+        public string ReadingStatus { get; set; } = string.Empty;
+    }
+
+    public class UpdateFavoriteRequest
+    {
+        public bool IsFavorite { get; set; }
     }
 }

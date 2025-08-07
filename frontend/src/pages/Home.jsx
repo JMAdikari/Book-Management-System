@@ -52,8 +52,8 @@ function Home() {
       await api.post('/books', {
         title: book.title,
         author: book.authors?.join(', ') || 'Unknown',
-        isbn: book.isbn || '',
-        thumbnailUrl: book.thumbnail || ''
+        isbn: book.isbn || null,
+        thumbnailUrl: book.thumbnail || null
       });
       setError('');
       alert('Book added to catalog!');

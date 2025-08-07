@@ -118,6 +118,32 @@ namespace BookManagementSystem.Services
             return true;
         }
 
+        public async Task<Book?> UpdateReadingStatusAsync(int userId, int bookId, string readingStatus)
+        {
+            var book = await _context.Books.FirstOrDefaultAsync(b => b.Id == bookId && b.UserId == userId);
+            if (book == null)
+            {
+                return null;
+            }
+
+            book.ReadingStatus = readingStatus;
+            await _context.SaveChangesAsync();
+            return book;
+        }
+
+        public async Task<Book?> UpdateFavoriteStatusAsync(int userId, int bookId, bool isFavorite)
+        {
+            var book = await _context.Books.FirstOrDefaultAsync(b => b.Id == bookId && b.UserId == userId);
+            if (book == null)
+            {
+                return null;
+            }
+
+            book.IsFavorite = isFavorite;
+            await _context.SaveChangesAsync();
+            return book;
+        }
+
         private List<string> ExtractAuthors(JsonElement volumeInfo)
         {
             if (volumeInfo.TryGetProperty("authors", out var authors))
