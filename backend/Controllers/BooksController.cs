@@ -19,6 +19,7 @@ namespace BookManagementSystem.Controllers
         }
 
         [HttpGet("search")]
+        [AllowAnonymous]
         public async Task<IActionResult> SearchBooks([FromQuery] string query)
         {
             if (string.IsNullOrEmpty(query))
@@ -36,7 +37,12 @@ namespace BookManagementSystem.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { Message = "Invalid user authentication" });
+            }
+
             var addedBook = await _bookService.AddBookAsync(userId, book);
             return Ok(new { Message = "Book added successfully", addedBook.Id });
         }
@@ -44,7 +50,12 @@ namespace BookManagementSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserBooks()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { Message = "Invalid user authentication" });
+            }
+
             var books = await _bookService.GetUserBooksAsync(userId);
             return Ok(books);
         }
@@ -55,7 +66,12 @@ namespace BookManagementSystem.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { Message = "Invalid user authentication" });
+            }
+
             var book = await _bookService.UpdateBookAsync(userId, bookId, updatedBook);
             if (book == null)
             {
@@ -68,7 +84,12 @@ namespace BookManagementSystem.Controllers
         [HttpDelete("{bookId}")]
         public async Task<IActionResult> DeleteBook(int bookId)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { Message = "Invalid user authentication" });
+            }
+
             var success = await _bookService.DeleteBookAsync(userId, bookId);
             if (!success)
             {
