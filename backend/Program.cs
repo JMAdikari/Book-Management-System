@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<BookService>();
+builder.Services.AddScoped<AIAnalysisService>();
 builder.Services.AddHttpClient(); // Add HttpClient for Google Books API
 
 // Add CORS
