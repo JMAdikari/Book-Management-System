@@ -72,7 +72,7 @@ function BookDetailsModal({ book, onClose }) {
           {/* Book Details */}
           <div className="md:col-span-2 space-y-4">
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">📚 Book Information</h3>
+              <h3 className="text-lg font-semibold text-white mb-2"> Book Information</h3>
               <div className="space-y-2">
                 <p className="text-gray-200">
                   <span className="font-medium text-white">Author(s):</span> {book.authors?.join(', ') || 'Unknown Author'}
@@ -144,7 +144,7 @@ function BookDetailsModal({ book, onClose }) {
         {/* Description */}
         {book.description && (
           <div className="mt-6">
-            <h3 className="text-lg font-semibold text-white mb-3">📖 Description</h3>
+            <h3 className="text-lg font-semibold text-white mb-3"> Description</h3>
             <p className="text-gray-200 leading-relaxed">
               {cleanDescription(book.description)}
             </p>
@@ -167,7 +167,7 @@ function BookDetailsModal({ book, onClose }) {
               rel="noopener noreferrer"
               className="bg-blue-500/80 backdrop-blur-sm text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 flex-1 font-medium text-center border border-blue-400/30"
             >
-              📖 Preview Book
+               Preview Book
             </a>
           )}
           
@@ -189,11 +189,11 @@ function BookDetailsModal({ book, onClose }) {
               </>
             ) : isAdded ? (
               <>
-                ✅ Added to Profile!
+                 Added to Profile!
               </>
             ) : (
               <>
-                ➕ Add to Profile
+                 Add to Profile
               </>
             )}
           </button>

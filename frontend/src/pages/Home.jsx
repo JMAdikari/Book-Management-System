@@ -108,7 +108,7 @@ function Home() {
                 Where every page leads to progress
               </p>
               <p className="text-lg sm:text-xl mb-10 text-gray-200 max-w-2xl mx-auto">
-                Organize, manage, and discover your favorite books with our intuitive platform
+                Organize, manage, and discover your favorite books with our intuitive platform where you can track your reading journey !!!
               </p>
               {/* Search Bar */}
               <form onSubmit={handleSearch} className="mb-6 max-w-2xl mx-auto">
@@ -129,20 +129,7 @@ function Home() {
                 </div>
                 {error && <p className="text-red-400 mt-2">{error}</p>}
               </form>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Link 
-                  to="/login" 
-                  className="bg-white/20 backdrop-blur-md text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white/30 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-w-[180px] border border-white/30"
-                >
-                  🚀 Login
-                </Link>
-                <Link 
-                  to="/register" 
-                  className="border-2 border-white/50 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-w-[180px] backdrop-blur-md"
-                >
-                  ✨ Sign Up Free
-                </Link>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -192,21 +179,21 @@ function Home() {
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             <div className="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20">
-              <div className="text-5xl mb-4">📚</div>
+              
               <h3 className="text-xl font-semibold mb-3 text-white">Organize Books</h3>
               <p className="text-gray-200 leading-relaxed">
                 Keep track of all your books in a beautifully organized digital library
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20">
-              <div className="text-5xl mb-4">🔍</div>
+              
               <h3 className="text-xl font-semibold mb-3 text-white">Smart Search</h3>
               <p className="text-gray-200 leading-relaxed">
                 Find books instantly with AI-powered search and recommendations
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20">
-              <div className="text-5xl mb-4">📊</div>
+              
               <h3 className="text-xl font-semibold mb-3 text-white">Track Progress</h3>
               <p className="text-gray-200 leading-relaxed">
                 Monitor your reading journey with analytics and insights
@@ -254,13 +241,13 @@ function Home() {
                   to="/login" 
                   className="bg-white/20 backdrop-blur-md text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white/30 hover:scale-105 transition-all duration-300 shadow-lg min-w-[180px] border border-white/30"
                 >
-                  🎯 Login Now
+                  Login Now
                 </Link>
                 <Link 
                   to="/register" 
                   className="bg-white/10 backdrop-blur-md text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg min-w-[180px] border border-white/20"
                 >
-                  🌟 Join Free Today
+                  Join Free Today
                 </Link>
               </div>
             </div>
@@ -273,7 +260,7 @@ function Home() {
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
               <div className="md:col-span-2">
                 <h3 className="text-xl font-semibold mb-4 text-white">
-                  📚 Book Management System
+                   Book Management System
                 </h3>
                 <p className="text-gray-300 mb-4 leading-relaxed">
                   The ultimate platform for book lovers to organize and track their reading.

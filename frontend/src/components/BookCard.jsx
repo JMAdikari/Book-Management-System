@@ -55,7 +55,7 @@ function BookCard({ book, onViewDetails, showAddButton = true }) {
         {/* Online Reading Indicator */}
         {book.previewLink && (
           <div className="absolute top-2 right-2 bg-purple-500/90 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm border border-purple-400/30">
-            📚 Online
+             Online
           </div>
         )}
       </div>
@@ -122,7 +122,7 @@ function BookCard({ book, onViewDetails, showAddButton = true }) {
               onClick={() => onViewDetails(book)}
               className="bg-blue-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all duration-300 flex-1 text-sm font-medium border border-blue-400/30"
             >
-              📖 View Details
+               View Details
             </button>
             
             {book.previewLink && (
@@ -132,7 +132,7 @@ function BookCard({ book, onViewDetails, showAddButton = true }) {
                 rel="noopener noreferrer"
                 className="bg-purple-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-all duration-300 flex-1 text-sm font-medium border border-purple-400/30 text-center"
               >
-                📚 Read Online
+               Read Online
               </a>
             )}
           </div>
@@ -156,11 +156,11 @@ function BookCard({ book, onViewDetails, showAddButton = true }) {
                 </>
               ) : isAdded ? (
                 <>
-                  ✅ Added!
+                   Added!
                 </>
               ) : (
                 <>
-                  ➕ Add to Profile
+                  Add to Profile
                 </>
               )}
             </button>

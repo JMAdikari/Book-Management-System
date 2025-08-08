@@ -78,7 +78,7 @@ function Navbar() {
               to="/" 
               className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
             >
-              🏠 Home
+                Home
             </Link>
             
             {isAuthenticated ? (
@@ -87,13 +87,7 @@ function Navbar() {
                   to="/catalog" 
                   className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
                 >
-                  📚 My Books
-                </Link>
-                <Link 
-                  to="/search" 
-                  className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
-                >
-                  � Search
+                    My Books
                 </Link>
                 
                 {/* Profile Dropdown */}
@@ -113,7 +107,7 @@ function Navbar() {
                           onClick={() => setShowProfileDropdown(false)}
                           className="block px-4 py-2 text-sm text-white hover:bg-white/20 transition-all duration-200"
                         >
-                          👤 View Profile
+                            View Profile
                         </Link>
                         <button
                           onClick={() => {
@@ -122,7 +116,7 @@ function Navbar() {
                           }}
                           className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-white/20 transition-all duration-200"
                         >
-                          ✏️ Edit Profile
+                            Edit Profile
                         </button>
                         <div className="border-t border-white/20 my-1"></div>
                         <button
@@ -130,9 +124,9 @@ function Navbar() {
                             setShowProfileDropdown(false);
                             handleLogout();
                           }}
-                          className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-red-500/20 transition-all duration-200"
+                          className="block w-full text-left px-4 py-2 text-sm text-white bg-red-500 hover:bg-red-600 transition-all duration-200"
                         >
-                          🚪 Logout
+                           Logout
                         </button>
                       </div>
                     </div>
@@ -145,13 +139,13 @@ function Navbar() {
                   to="/login" 
                   className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
                 >
-                  🔐 Login
+                   Login
                 </Link>
                 <Link 
                   to="/register" 
                   className="bg-white/20 backdrop-blur-md text-white hover:bg-white/30 hover:scale-105 px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 border border-white/30"
                 >
-                  ✨ Sign Up
+                  Sign Up
                 </Link>
               </>
             )}
