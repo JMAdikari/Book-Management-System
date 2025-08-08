@@ -90,7 +90,7 @@ function Register() {
               disabled={loading}
               className="w-full bg-white/20 backdrop-blur-md text-white p-3 rounded-lg text-sm font-semibold hover:bg-white/30 hover:scale-105 transition-all duration-300 disabled:bg-white/10 disabled:cursor-not-allowed border border-white/30"
             >
-              {loading ? 'Creating Account...' : '✨ Create Account'}
+              {loading ? 'Creating Account...' : ' Create Account'}
             </button>
           </form>
           <div className="mt-6 text-center">

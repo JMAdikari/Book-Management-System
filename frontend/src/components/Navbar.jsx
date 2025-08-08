@@ -6,6 +6,7 @@ import logo from '../assets/logo.png';
 function Navbar() {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
   useEffect(() => {
     // Check authentication status and update state
@@ -26,13 +27,22 @@ function Navbar() {
       }
     };
     
+    // Close dropdown when clicking outside
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.profile-dropdown')) {
+        setShowProfileDropdown(false);
+      }
+    };
+    
     window.addEventListener('storage', handleStorageChange);
+    document.addEventListener('click', handleClickOutside);
     
     // Check auth status every second (temporary debugging solution)
     const interval = setInterval(checkAuth, 1000);
     
     return () => {
       window.removeEventListener('storage', handleStorageChange);
+      document.removeEventListener('click', handleClickOutside);
       clearInterval(interval);
     };
   }, []);
@@ -68,24 +78,60 @@ function Navbar() {
               to="/" 
               className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
             >
-              🏠 Home
+                Home
             </Link>
             
             {isAuthenticated ? (
               <>
-                
                 <Link 
-                  to="/profile" 
+                  to="/catalog" 
                   className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
                 >
-                  👤 Profile
+                    My Books
                 </Link>
-                <button
-                  onClick={handleLogout}
-                  className="bg-red-500/80 backdrop-blur-md hover:bg-red-500 px-5 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 border border-red-400/50 hover:scale-105"
-                >
-                  🚪 Logout
-                </button>
+                
+                {/* Profile Dropdown */}
+                <div className="relative profile-dropdown">
+                  <button
+                    onClick={() => setShowProfileDropdown(!showProfileDropdown)}
+                    className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center"
+                  >
+                    👤 Profile ▼
+                  </button>
+                  
+                  {showProfileDropdown && (
+                    <div className="absolute right-0 mt-2 w-48 bg-black/80 backdrop-blur-md rounded-lg shadow-lg border border-white/20 z-50">
+                      <div className="py-1">
+                        <Link
+                          to="/profile"
+                          onClick={() => setShowProfileDropdown(false)}
+                          className="block px-4 py-2 text-sm text-white hover:bg-white/20 transition-all duration-200"
+                        >
+                            View Profile
+                        </Link>
+                        <button
+                          onClick={() => {
+                            setShowProfileDropdown(false);
+                            navigate('/profile?edit=true');
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-white/20 transition-all duration-200"
+                        >
+                            Edit Profile
+                        </button>
+                        <div className="border-t border-white/20 my-1"></div>
+                        <button
+                          onClick={() => {
+                            setShowProfileDropdown(false);
+                            handleLogout();
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-white bg-red-500 hover:bg-red-600 transition-all duration-200"
+                        >
+                           Logout
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </>
             ) : (
               <>
@@ -93,13 +139,13 @@ function Navbar() {
                   to="/login" 
                   className="text-white hover:bg-white/20 backdrop-blur-md px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
                 >
-                  🔐 Login
+                   Login
                 </Link>
                 <Link 
                   to="/register" 
                   className="bg-white/20 backdrop-blur-md text-white hover:bg-white/30 hover:scale-105 px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 border border-white/30"
                 >
-                  ✨ Sign Up
+                  Sign Up
                 </Link>
               </>
             )}
