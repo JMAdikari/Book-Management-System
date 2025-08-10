@@ -35,7 +35,7 @@ function DetailedAnalysisModal({ isOpen, onClose, analysisData }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="card max-w-4xl max-h-[90vh] overflow-y-auto w-full bg-gradient-to-br from-slate-900/95 to-slate-800/95 border-slate-600/50">
+      <div className="card max-w-4xl max-h-[90vh] overflow-y-auto w-full bg-black/30">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl font-bold text-glass-primary">🤖 Detailed AI Reading Analysis</h2>
           <button
