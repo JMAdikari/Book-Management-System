@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import api from '../services/api';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { authService } from '../services/authService';
+import { aiAnalysisService } from '../services/aiAnalysisService';
 import Navbar from '../components/Navbar';
+import DetailedAnalysisModal from '../components/DetailedAnalysisModal';
 
 function Profile() {
   const [user, setUser] = useState({ username: '', email: '' });
@@ -15,6 +17,10 @@ function Profile() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [bookStats, setBookStats] = useState({ total: 0, reading: 0, finished: 0, wantToRead: 0 });
+  const [aiAnalysis, setAiAnalysis] = useState(null);
+  const [loadingAI, setLoadingAI] = useState(false);
+  const [showDetailedModal, setShowDetailedModal] = useState(false);
+  const [detailedAnalysisData, setDetailedAnalysisData] = useState(null);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -45,6 +51,27 @@ function Profile() {
             favorites: books.filter(book => book.isFavorite).length
           };
           setBookStats(stats);
+
+          // Fetch AI analysis
+          try {
+            console.log('Starting AI analysis fetch...');
+            setLoadingAI(true);
+            const analysisData = await aiAnalysisService.getReadingAnalysis();
+            console.log('AI analysis response:', analysisData);
+            setAiAnalysis(analysisData);
+          } catch (aiErr) {
+            console.error('Failed to fetch AI analysis:', aiErr);
+            console.error('AI Error details:', aiErr.response?.data);
+            // Set fallback AI analysis
+            setAiAnalysis({
+              readingPattern: "Building your reading foundation",
+              recommendations: ["Start with books that genuinely interest you", "Set small, achievable reading goals"],
+              readingSpeed: "Add more books to track your pace",
+              motivationalInsight: "Every book you read makes you smarter!"
+            });
+          } finally {
+            setLoadingAI(false);
+          }
         } catch (err) {
           console.error('Failed to fetch book stats:', err);
         }
@@ -122,8 +149,38 @@ function Profile() {
     });
   };
 
+  const handleDetailedAnalysis = async () => {
+    try {
+      setLoadingAI(true);
+      const detailedData = await aiAnalysisService.getDetailedInsights();
+      setDetailedAnalysisData(detailedData);
+      setShowDetailedModal(true);
+    } catch (error) {
+      console.error('Failed to get detailed analysis:', error);
+      alert('Failed to generate detailed analysis. Please try again later.');
+    } finally {
+      setLoadingAI(false);
+    }
+  };
+
+  const handleRefreshAnalysis = async () => {
+    try {
+      setLoadingAI(true);
+      const analysisData = await aiAnalysisService.getReadingAnalysis();
+      setAiAnalysis(analysisData);
+      setSuccess('AI analysis refreshed successfully!');
+      setError('');
+    } catch (error) {
+      console.error('Failed to refresh AI analysis:', error);
+      setError('Failed to refresh AI analysis. Please try again.');
+      setSuccess('');
+    } finally {
+      setLoadingAI(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen" style={{ background: 'var(--bg-gradient-primary)' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#958e8b' }}>
       <Navbar />
       
       {/* Standard Page Content */}
@@ -173,22 +230,22 @@ function Profile() {
                 Daily Overview
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="card text-center bg-gradient-to-br from-cyan-500/15 to-blue-600/15 border-cyan-400/25 shadow-md shadow-cyan-500/10">
+                <div className="card text-center bg-black/30">
                   <div className="text-4xl mb-3">📚</div>
                   <h3 className="text-2xl font-bold text-glass-primary">{bookStats.total}</h3>
                   <p className="text-glass-secondary">Total Books</p>
                 </div>
-                <div className="card text-center bg-gradient-to-br from-amber-500/15 to-orange-600/15 border-amber-400/25 shadow-md shadow-amber-500/10">
+                <div className="card text-center bg-black/30">
                   <div className="text-4xl mb-3">📖</div>
                   <h3 className="text-2xl font-bold text-glass-primary">{bookStats.reading}</h3>
                   <p className="text-glass-secondary">Currently Reading</p>
                 </div>
-                <div className="card text-center bg-gradient-to-br from-green-500/15 to-emerald-600/15 border-green-400/25 shadow-md shadow-green-500/10">
+                <div className="card text-center bg-black/30">
                   <div className="text-4xl mb-3">✅</div>
                   <h3 className="text-2xl font-bold text-glass-primary">{bookStats.finished}</h3>
                   <p className="text-glass-secondary">Completed</p>
                 </div>
-                <div className="card text-center bg-gradient-to-br from-pink-500/15 to-rose-600/15 border-pink-400/25 shadow-md shadow-pink-500/10">
+                <div className="card text-center bg-black/30">
                   <div className="text-4xl mb-3">❤️</div>
                   <h3 className="text-2xl font-bold text-glass-primary">{bookStats.favorites}</h3>
                   <p className="text-glass-secondary">Favorites</p>
@@ -203,7 +260,7 @@ function Profile() {
                 Reading Progress & AI Analysis
               </h2>
               <div className="grid grid-cols-1 gap-8">
-                <div className="card bg-gradient-to-br from-violet-500/12 to-purple-600/12 border-violet-400/25 shadow-md shadow-violet-500/10">
+                <div className="card bg-black/30">
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-2xl font-semibold text-glass-primary">Completion Rate</h3>
                     <span className="text-4xl font-bold text-glass-primary">{getReadingProgress()}%</span>
@@ -220,7 +277,7 @@ function Profile() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div className="card bg-gradient-to-br from-sky-500/12 to-blue-600/12 border-sky-400/25 shadow-md shadow-sky-500/10">
+                  <div className="card bg-black/30">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-2xl font-semibold text-glass-primary">Reading Goals</h3>
                       {!editGoalsMode && (
@@ -307,41 +364,88 @@ function Profile() {
                     )}
                   </div>
 
-                  <div className="card bg-gradient-to-br from-indigo-500/12 to-purple-600/12 border-indigo-400/25 shadow-md shadow-indigo-500/10">
-                    <div className="flex items-center mb-6">
-                      
+                  <div className="card bg-black/30">
+                    <div className="flex items-center justify-between mb-6">
                       <h3 className="text-2xl font-semibold text-glass-primary">AI Reading Analysis</h3>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                        <div className="flex items-center mb-2">
-                           
-                          <span className="text-glass-primary font-semibold">Reading Pattern</span>
-                        </div>
-                        <p className="text-glass-secondary text-sm">Most active on weekends, prefer fiction genre</p>
-                      </div>
-                      
-                      <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                        <div className="flex items-center mb-2">
-                         
-                          <span className="text-glass-primary font-semibold">Recommendation</span>
-                        </div>
-                        <p className="text-glass-secondary text-sm">Try sci-fi novels to diversify your reading</p>
-                      </div>
-                      
-                      <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                        <div className="flex items-center mb-2">
-                           
-                          <span className="text-glass-primary font-semibold">Reading Speed</span>
-                        </div>
-                        <p className="text-glass-secondary text-sm">Average: 2.5 books per month - Above average!</p>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={handleRefreshAnalysis}
+                          disabled={loadingAI}
+                          className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-3 py-2 rounded-lg transition-all duration-300 font-medium flex items-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {loadingAI ? '🔄' : '🔄'} Refresh
+                        </button>
                       </div>
                     </div>
                     
-                    <div className="mt-6 pt-4 border-t border-white/30">
-                      <button className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 px-4 rounded-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2">
+                    {loadingAI ? (
+                      <div className="text-center py-8">
+                        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 mb-4" style={{ borderBottomColor: 'var(--text-primary)' }}></div>
+                        <p className="text-glass-secondary">Generating AI insights...</p>
+                      </div>
+                    ) : aiAnalysis ? (
+                      <div className="space-y-4">
+                        <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                          <div className="flex items-center mb-2">
+                             
+                            <span className="text-glass-primary font-semibold">Reading Pattern</span>
+                          </div>
+                          <p className="text-glass-secondary text-sm">{aiAnalysis.readingPattern}</p>
+                        </div>
                         
-                        Get Detailed AI Analysis
+                        <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                          <div className="flex items-center mb-2">
+                           
+                            <span className="text-glass-primary font-semibold">Recommendations</span>
+                          </div>
+                          <div className="space-y-1">
+                            {aiAnalysis.recommendations && aiAnalysis.recommendations.slice(0, 2).map((rec, index) => (
+                              <p key={index} className="text-glass-secondary text-sm">• {rec}</p>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                          <div className="flex items-center mb-2">
+                             
+                            <span className="text-glass-primary font-semibold">Reading Speed</span>
+                          </div>
+                          <p className="text-glass-secondary text-sm">{aiAnalysis.readingSpeed}</p>
+                        </div>
+
+                        {aiAnalysis.motivationalInsight && (
+                          <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-lg p-4 backdrop-blur-sm border border-emerald-400/20">
+                            <div className="flex items-center mb-2">
+                              💡
+                              <span className="text-emerald-300 font-semibold ml-2">Daily Motivation</span>
+                            </div>
+                            <p className="text-emerald-200 text-sm italic">{aiAnalysis.motivationalInsight}</p>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="text-center py-8">
+                        <p className="text-glass-secondary">Unable to load AI analysis</p>
+                      </div>
+                    )}
+                    
+                    <div className="mt-6 pt-4 border-t border-white/30">
+                      <button 
+                        onClick={handleDetailedAnalysis}
+                        disabled={loadingAI}
+                        className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 px-4 rounded-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {loadingAI ? (
+                          <>
+                            <div className="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                            Analyzing...
+                          </>
+                        ) : (
+                          <>
+                            
+                            Get Detailed AI Analysis
+                          </>
+                        )}
                       </button>
                     </div>
                   </div>
@@ -358,7 +462,7 @@ function Profile() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <button
                   onClick={() => navigate('/catalog')}
-                  className="card text-left transition-all duration-300 bg-gradient-to-br from-blue-500/15 to-indigo-600/15 border-blue-400/25 shadow-md shadow-blue-500/10"
+                  className="card text-left transition-all duration-300 bg-black/30"
                 >
                   <div className="flex items-center mb-4">
                      
@@ -371,7 +475,7 @@ function Profile() {
                 
                 <button
                   onClick={() => navigate('/')}
-                  className="card text-left transition-all duration-300 bg-gradient-to-br from-emerald-500/15 to-teal-600/15 border-emerald-400/25 shadow-md shadow-emerald-500/10"
+                  className="card text-left transition-all duration-300 bg-black/30"
                 >
                   <div className="flex items-center mb-4">
                      
@@ -382,7 +486,7 @@ function Profile() {
                   </div>
                 </button>
 
-                <div className="card bg-gradient-to-br from-purple-500/15 to-pink-600/15 border-purple-400/25 shadow-md shadow-purple-500/10">
+                <div className="card bg-black/30">
                   <div className="flex items-center mb-4">
                      
                     <div>
@@ -392,7 +496,7 @@ function Profile() {
                   </div>
                 </div>
 
-                <div className="card bg-gradient-to-br from-rose-500/15 to-red-600/15 border-rose-400/25 shadow-md shadow-rose-500/10">
+                <div className="card bg-black/30">
                   <div className="flex items-center mb-4">
                      
                     <div>
@@ -405,12 +509,12 @@ function Profile() {
             </section>
 
             {/* Additional spacing below Quick Actions */}
-            <div className="mb-8"></div>
+            <div className="pb-8"></div>
           </div>
         ) : (
           /* Edit Mode */
           <div className="max-w-2xl mx-auto">
-            <div className="card">
+            <div className="card bg-black/30">
               <h2 className="text-3xl font-bold text-glass-primary mb-8 text-center">Edit Profile</h2>
               <form onSubmit={handleUpdate} className="space-y-6">
                 <div>
@@ -496,6 +600,13 @@ function Profile() {
           </div>
         )}
       </div>
+
+      {/* Detailed Analysis Modal */}
+      <DetailedAnalysisModal 
+        isOpen={showDetailedModal}
+        onClose={() => setShowDetailedModal(false)}
+        analysisData={detailedAnalysisData}
+      />
     </div>
   );
 }

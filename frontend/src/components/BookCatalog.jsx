@@ -260,7 +260,7 @@ function BookCatalog() {
   );
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--bg-gradient-primary)' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#958e8b' }}>
       <Navbar />
       <div className="container mx-auto p-4 pt-24">
         <div className="text-center mb-12">
@@ -287,7 +287,7 @@ function BookCatalog() {
         {books.length > 0 && (
           <div className="mb-8">
             {/* Search and Filter Controls */}
-            <div className="card mb-6">
+            <div className="card mb-6 bg-black/30">
               <div className="flex flex-col lg:flex-row gap-4">
                 {/* Search Bar */}
                 <div className="flex-grow">
@@ -361,7 +361,7 @@ function BookCatalog() {
 
         {filteredBooks.length === 0 && books.length > 0 ? (
           <div className="text-center text-glass-secondary py-16">
-            <div className="card max-w-md mx-auto">
+            <div className="card max-w-md mx-auto bg-black/30">
               
               <h3 className="text-2xl font-bold mb-2 text-glass-primary">No books found</h3>
               <p className="text-lg mb-6">Try adjusting your search or filters</p>
@@ -379,7 +379,7 @@ function BookCatalog() {
           </div>
         ) : books.length === 0 ? (
           <div className="text-center text-glass-secondary py-20">
-            <div className="card max-w-md mx-auto">
+            <div className="card max-w-md mx-auto bg-black/30">
               
               <h3 className="text-3xl font-bold mb-4 text-glass-primary">Your catalog is empty</h3>
               <p className="text-lg mb-8 text-glass-secondary">Start building your digital library by adding some books!</p>
@@ -395,7 +395,7 @@ function BookCatalog() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {filteredBooks.map((book) => (
-              <div key={book.id} className="card flex flex-col h-full group relative overflow-hidden">
+              <div key={book.id} className="card flex flex-col h-full group relative overflow-hidden bg-black/30">
                 {/* Book Cover */}
                 <div className="flex-shrink-0 mb-4 relative">
                       <img
@@ -452,14 +452,14 @@ function BookCatalog() {
                         <div className="flex gap-2">
                           <button
                             onClick={() => handleViewDetails(book)}
-                            className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white flex-1 text-xs py-2 px-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1 font-medium"
+                            className="bg-gradient-to-r from-blue-700 to-indigo-800 hover:from-blue-800 hover:to-indigo-900 text-white flex-1 text-xs py-2 px-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1 font-medium"
                           >
                              Details
                           </button>
                           
                           <button
                             onClick={() => handlePreviewBook(book)}
-                            className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white flex-1 text-xs py-2 px-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1 font-medium"
+                            className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white flex-1 text-xs py-2 px-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1 font-medium"
                           >
                              Preview
                           </button>

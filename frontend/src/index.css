@@ -5,30 +5,30 @@
 /* Glass-morphism Theme Root Variables */
 @layer base {
   :root {
-    /* Glass-morphism Theme Colors */
-    --glass-bg-primary: rgba(255, 255, 255, 0.1);
-    --glass-bg-secondary: rgba(255, 255, 255, 0.2);
-    --glass-bg-tertiary: rgba(255, 255, 255, 0.05);
+    /* Glass-morphism Theme Colors - Updated for brown theme */
+    --glass-bg-primary: rgba(0, 0, 0, 0.3);
+    --glass-bg-secondary: rgba(0, 0, 0, 0.4);
+    --glass-bg-tertiary: rgba(0, 0, 0, 0.2);
     
     /* Dark Glass Colors */
-    --glass-dark-primary: rgba(0, 0, 0, 0.2);
-    --glass-dark-secondary: rgba(0, 0, 0, 0.3);
-    --glass-dark-tertiary: rgba(0, 0, 0, 0.4);
+    --glass-dark-primary: rgba(0, 0, 0, 0.3);
+    --glass-dark-secondary: rgba(0, 0, 0, 0.4);
+    --glass-dark-tertiary: rgba(0, 0, 0, 0.5);
     
-    /* Border Colors */
-    --glass-border-light: rgba(255, 255, 255, 0.2);
-    --glass-border-medium: rgba(255, 255, 255, 0.3);
-    --glass-border-strong: rgba(255, 255, 255, 0.5);
+    /* Border Colors - Updated for better contrast on brown background */
+    --glass-border-light: rgba(255, 255, 255, 0.1);
+    --glass-border-medium: rgba(255, 255, 255, 0.2);
+    --glass-border-strong: rgba(255, 255, 255, 0.3);
     
-    /* Text Colors */
+    /* Text Colors - Optimized for brown background */
     --text-primary: #ffffff;
-    --text-secondary: #e5e7eb;
-    --text-tertiary: #d1d5db;
-    --text-muted: #9ca3af;
+    --text-secondary: #f3f4f6;
+    --text-tertiary: #e5e7eb;
+    --text-muted: #d1d5db;
     
-    /* Background Gradients */
-    --bg-gradient-primary: linear-gradient(135deg, #1f2937 0%, #111827 50%, #1f2937 100%);
-    --bg-gradient-secondary: linear-gradient(to bottom right, #374151, #1f2937, #111827);
+    /* Background Gradients - Updated to brown theme */
+    --bg-gradient-primary: #958e8b;
+    --bg-gradient-secondary: linear-gradient(to bottom right, #958e8b, #8a817e, #7f7572);
     
     /* Glass Blur Effects */
     --blur-sm: blur(8px);
@@ -55,9 +55,9 @@
 }
 
 @layer components {
-  /* Glass-morphism Primary Button */
+  /* Glass-morphism Primary Button - Updated for brown theme */
   .btn-primary {
-    background: var(--glass-bg-primary);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: var(--blur-md);
     border: 1px solid var(--glass-border-light);
     color: var(--text-primary);
@@ -65,19 +65,19 @@
     border-radius: 0.5rem;
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
   
   .btn-primary:hover {
-    background: var(--glass-bg-secondary);
+    background: rgba(0, 0, 0, 0.4);
     border-color: var(--glass-border-medium);
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   }
   
-  /* Glass-morphism Secondary Button */
+  /* Glass-morphism Secondary Button - Updated for brown theme */
   .btn-secondary {
-    background: var(--glass-dark-primary);
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: var(--blur-md);
     border: 1px solid var(--glass-border-light);
     color: var(--text-primary);
@@ -85,32 +85,32 @@
     border-radius: 0.5rem;
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
   
   .btn-secondary:hover {
-    background: var(--glass-dark-secondary);
+    background: rgba(0, 0, 0, 0.5);
     border-color: var(--glass-border-medium);
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   }
   
-  /* Glass-morphism Card */
+  /* Glass-morphism Card - Updated to match bg-black/30 */
   .card {
-    background: var(--glass-bg-primary);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: var(--blur-md);
     border: 1px solid var(--glass-border-light);
     border-radius: 0.75rem;
     padding: 1.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .card:hover {
-    background: var(--glass-bg-secondary);
+    background: rgba(0, 0, 0, 0.4);
     border-color: var(--glass-border-medium);
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   }
   
   /* Glass-morphism Input */
@@ -158,21 +158,21 @@
   border-color: var(--glass-border-medium);
 }
 
-/* Additional Glass-morphism Utility Classes */
+/* Additional Glass-morphism Utility Classes - Updated for brown theme */
 .glass-navbar {
-  background: var(--glass-dark-primary);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: var(--blur-md);
   border-bottom: 1px solid var(--glass-border-light);
 }
 
 .glass-modal {
-  background: var(--glass-bg-primary);
+  background: rgba(0, 0, 0, 0.3);
   backdrop-filter: var(--blur-lg);
   border: 1px solid var(--glass-border-light);
 }
 
 .glass-overlay {
-  background: var(--glass-dark-secondary);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: var(--blur-md);
 }
 

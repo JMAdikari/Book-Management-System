@@ -40,10 +40,10 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div className="min-h-screen" style={{ backgroundColor: '#958e8b' }}>
       <Navbar />
       <div className="flex items-center justify-center min-h-screen pt-20">
-        <div className="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-2xl w-full max-w-sm border border-white/20">
+        <div className="bg-black/30 backdrop-blur-md p-8 rounded-xl shadow-2xl w-full max-w-sm border border-white/10">
           <h2 className="text-2xl font-extrabold mb-6 text-center text-white">Create Account</h2>
           {error && <p className="text-red-300 mb-4 text-center text-sm bg-red-500/20 p-2 rounded-lg border border-red-300/30">{error}</p>}
           {success && (
@@ -58,7 +58,7 @@ function Register() {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full p-3 border border-white/30 bg-white/10 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 text-sm placeholder-gray-300"
+                className="w-full p-3 border border-white/20 bg-black/30 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 text-sm placeholder-gray-300"
                 placeholder="Enter your username"
                 required
               />
@@ -69,7 +69,7 @@ function Register() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-3 border border-white/30 bg-white/10 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 text-sm placeholder-gray-300"
+                className="w-full p-3 border border-white/20 bg-black/30 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 text-sm placeholder-gray-300"
                 placeholder="Enter your email"
                 required
               />
@@ -80,7 +80,7 @@ function Register() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-3 border border-white/30 bg-white/10 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 text-sm placeholder-gray-300"
+                className="w-full p-3 border border-white/20 bg-black/30 backdrop-blur-md text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/30 text-sm placeholder-gray-300"
                 placeholder="Enter your password"
                 required
               />
@@ -88,7 +88,7 @@ function Register() {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-white/20 backdrop-blur-md text-white p-3 rounded-lg text-sm font-semibold hover:bg-white/30 hover:scale-105 transition-all duration-300 disabled:bg-white/10 disabled:cursor-not-allowed border border-white/30"
+              className="w-full bg-black/40 backdrop-blur-md text-white p-3 rounded-lg text-sm font-semibold hover:bg-black/50 hover:scale-105 transition-all duration-300 disabled:bg-black/20 disabled:cursor-not-allowed border border-white/20"
             >
               {loading ? 'Creating Account...' : ' Create Account'}
             </button>

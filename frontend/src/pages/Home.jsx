@@ -90,7 +90,7 @@ function Home() {
       {/* Content Overlay */}
       <div className="relative z-10">
         <Navbar />
-      
+      <div className="pb-10"></div>
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-black/40 to-black/60 text-white relative overflow-hidden backdrop-blur-sm">
           <div className="absolute inset-0 opacity-10">
@@ -142,26 +142,28 @@ function Home() {
               {searchResults.map((book) => (
                 <div
                   key={book.id}
-                  className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20"
+                  className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20 flex flex-col h-full"
                 >
                   <img
                     src={book.thumbnail || 'https://via.placeholder.com/150'}
                     alt={book.title}
                     className="w-full h-48 object-cover mb-4 rounded"
                   />
-                  <h3 className="text-lg font-semibold text-white mb-2">{book.title}</h3>
-                  <p className="text-gray-200 mb-2">Author(s): {book.authors?.join(', ') || 'Unknown'}</p>
-                  <p className="text-gray-200 mb-4">ISBN: {book.isbn || 'N/A'}</p>
-                  <div className="flex gap-4">
+                  <div className="flex-grow">
+                    <h3 className="text-lg font-semibold text-white mb-2">{book.title}</h3>
+                    <p className="text-gray-200 mb-2">Author(s): {book.authors?.join(', ') || 'Unknown'}</p>
+                    <p className="text-gray-200 mb-4">ISBN: {book.isbn || 'N/A'}</p>
+                  </div>
+                  <div className="flex gap-4 mt-auto">
                     <button
                       onClick={() => handleViewDetails(book)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all duration-300 flex-1"
+                      className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-300 flex-1"
                     >
                       View Details
                     </button>
                     <button
                       onClick={() => handleAddBook(book)}
-                      className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-all duration-300 flex-1"
+                      className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-300 flex-1"
                     >
                       Add to Catalog
                     </button>
